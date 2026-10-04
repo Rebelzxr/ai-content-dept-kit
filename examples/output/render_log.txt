@@ -1,0 +1,13 @@
+$ python3 tools/gui_frames.py examples/slides.sample.json examples/output
+01.png cover
+02.png text
+03.png window
+04.png window
+05.png window
+06.png text
+07.png end
+pdf ok
+exit=0
+$ python3 tools/article_cover.py G02 examples/output "AI CONTENT DEPT KIT" "我用 5 个 AI" "搭了一个内容部门" "ai-content-dept-kit" templates/SAFETY_SETTINGS.json
+ok <kit>/examples/output
+exit=0

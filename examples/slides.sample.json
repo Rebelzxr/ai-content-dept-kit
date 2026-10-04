@@ -1,0 +1,170 @@
+{
+ "id": "SAMPLE",
+ "lang": "en",
+ "kicker": "AI CONTENT DEPT KIT · SAMPLE",
+ "footer": "ai-content-dept-kit · MIT",
+ "slides": [
+  {
+   "type": "cover",
+   "art": "G02",
+   "hook": "5 AIs, one small content department",
+   "sub": "A sample deck made with this kit"
+  },
+  {
+   "type": "text",
+   "title": "The 5 roles",
+   "items": [
+    "Main agent: coordinates, posts",
+    "Writer: drafts",
+    "Maker: images, tests, screenshots",
+    "Reviewer: fresh and read-only",
+    "Scorer: rates the draft"
+   ],
+   "note": "The main agent posts only after a human approves.",
+   "spot": "sorting",
+   "spot_size": 280
+  },
+  {
+   "type": "window",
+   "title": "One deny line in settings.json",
+   "sub": "allow = permitted. deny = blocked.",
+   "win_top": 400,
+   "win": {
+    "kind": "editor",
+    "title": ".claude/settings.json",
+    "lines": [
+     [
+      "code",
+      "{"
+     ],
+     [
+      "code",
+      "  \"permissions\": {"
+     ],
+     [
+      "code",
+      "    \"allow\": [\"Bash(ls *)\"],"
+     ],
+     [
+      "hl",
+      "    \"deny\": [\"Bash(rm *)\"]"
+     ],
+     [
+      "code",
+      "  }"
+     ],
+     [
+      "code",
+      "}"
+     ]
+    ]
+   },
+   "note": "Blocks matching Bash commands only, not every way to delete a file. Our test: Claude Code 2.1.283, 2026-09-27, one run."
+  },
+  {
+   "type": "window",
+   "title": "This deck was rendered by the kit",
+   "sub": "One command, run from the kit folder.",
+   "device": "laptop",
+   "win": {
+    "kind": "terminal",
+    "title": "Terminal — ai-content-dept-kit",
+    "lines": [
+     [
+      "cmd",
+      "python3 tools/gui_frames.py examples/slides.sample.json examples/output"
+     ],
+     [
+      "out",
+      "01.png cover"
+     ],
+     [
+      "out",
+      "02.png text"
+     ],
+     [
+      "out",
+      "03.png window"
+     ],
+     [
+      "out",
+      "04.png window"
+     ],
+     [
+      "out",
+      "05.png window"
+     ],
+     [
+      "out",
+      "06.png text"
+     ],
+     [
+      "out",
+      "07.png end"
+     ],
+     [
+      "ok",
+      "pdf ok"
+     ]
+    ]
+   },
+   "note": "Real output of the sample render. Your Chrome and fonts may differ slightly."
+  },
+  {
+   "type": "window",
+   "title": "Every first draft went back",
+   "sub": "A fresh reviewer each round, same standard.",
+   "win_top": 400,
+   "win": {
+    "kind": "terminal",
+    "title": "Review results — our first batch of 8 social packs",
+    "lines": [
+     [
+      "dim",
+      "round 1: first drafts"
+     ],
+     [
+      "bad",
+      "  8 of 8 packs: REVISE"
+     ],
+     [
+      "dim",
+      "round 2: after one round of fixes"
+     ],
+     [
+      "ok",
+      "  8 of 8 packs: PASS"
+     ]
+    ]
+   },
+   "note": "Summary of our own review files, October 2026. One batch only."
+  },
+  {
+   "type": "text",
+   "title": "Needs a human yes first",
+   "items": [
+    "Publishing, sending messages",
+    "Spending money",
+    "Putting a site live",
+    "Changing account settings",
+    "Deleting shared data"
+   ],
+   "note": "The AI can prepare everything. A person decides.",
+   "spot": "stamp",
+   "spot_size": 280
+  },
+  {
+   "type": "end",
+   "title": "Try it this week",
+   "items": [
+    "Copy templates/ into your project",
+    "Write a 3-line brief for one post",
+    "Have a fresh reviewer check it",
+    "Approve before anything goes out"
+   ],
+   "cta": "Free kit · MIT license",
+   "spot": "checklist",
+   "spot_size": 260
+  }
+ ]
+}

@@ -1,0 +1,94 @@
+{
+  "name": "ai-content-dept-kit scoring rubric",
+  "version": "1.0",
+  "how_to_use": "Replace {reader} in each instruction with the reader text. Ask your model each question about the post on a 1-5 scale. Prefer a model that returns probabilities for 1..5; score = expected value. Total = weighted sum of the six scores (weights add up to 1.0). See scoring.md.",
+  "reader": "The target reader is a working professional or small-business owner who wants to use AI to improve their career or business: using AI tools as co-workers, then learning to build AI agents and coordinate several of them through one main agent.",
+  "scale": "1-5",
+  "questions": {
+    "hook": {
+      "type": "score",
+      "instructions": "{reader} How strongly do the title and first lines of `post` make that reader want to keep reading?",
+      "criteria": {
+        "1": "Not at all: generic or confusing",
+        "2": "Weak",
+        "3": "Moderate",
+        "4": "Strong",
+        "5": "Very strongly: a specific, surprising promise or tension"
+      },
+      "weight": 0.25
+    },
+    "icp_fit": {
+      "type": "score",
+      "instructions": "{reader} How relevant and useful is `post` to that reader's goal?",
+      "criteria": {
+        "1": "Irrelevant to that reader",
+        "2": "Weak",
+        "3": "Moderate",
+        "4": "Strong",
+        "5": "Directly moves that reader toward working with AI co-workers or agents"
+      },
+      "weight": 0.25
+    },
+    "voice": {
+      "type": "score",
+      "instructions": "How much does `post` sound like a specific real person sharing their own experience, decisions and opinions, rather than a neutral manual?",
+      "criteria": {
+        "1": "A neutral manual with no person in it",
+        "2": "Weak",
+        "3": "Moderate",
+        "4": "Strong",
+        "5": "Clearly one real person's experience and point of view"
+      },
+      "weight": 0.15
+    },
+    "clarity": {
+      "type": "score",
+      "instructions": "Could a beginner with no coding background understand the main point of `post` and know their first step?",
+      "criteria": {
+        "1": "No: jargon-heavy or unclear",
+        "2": "Weak",
+        "3": "Moderate",
+        "4": "Strong",
+        "5": "Yes: plain language and an obvious first step"
+      },
+      "weight": 0.1
+    },
+    "share": {
+      "type": "score",
+      "instructions": "{reader} How likely is that reader to save `post` or share it with a friend or colleague?",
+      "criteria": {
+        "1": "Very unlikely",
+        "2": "Weak",
+        "3": "Moderate",
+        "4": "Strong",
+        "5": "Very likely: useful enough to pass on"
+      },
+      "weight": 0.15
+    },
+    "novelty": {
+      "type": "score",
+      "instructions": "How new would the main idea in `post` be to someone who already uses ChatGPT casually?",
+      "criteria": {
+        "1": "Common knowledge",
+        "2": "Weak",
+        "3": "Moderate",
+        "4": "Strong",
+        "5": "A genuinely surprising insight or tested finding"
+      },
+      "weight": 0.1
+    }
+  },
+  "weights": {
+    "hook": 0.25,
+    "icp_fit": 0.25,
+    "voice": 0.15,
+    "clarity": 0.1,
+    "share": 0.15,
+    "novelty": 0.1
+  },
+  "aggregation": {
+    "per_question": "expected = sum(k * p_k for k in 1..5)",
+    "total": "sum(weight[q] * expected[q] for q in questions)",
+    "range": "1.0 to 5.0"
+  }
+}
